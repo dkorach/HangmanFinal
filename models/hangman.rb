@@ -1,4 +1,4 @@
-@words = "able
+words = "able
 about
 account
 acid
@@ -847,4 +847,22 @@ yes
 yesterday
 you
 young".split
-puts @words.sample
+guessing_word = words.sample
+puts guessing_word
+puts "_ " * guessing_word.length
+
+puts "Guess a letter"
+
+user_guess = gets.chomp
+
+if guessing_word.include? user_guess
+  puts "OOOOOOHHHHHH YEEEEEAAAA"
+else
+	puts "NOOOOOOOOOOOO"
+end
+
+correct_letter = []
+if guessing_word.include? user_guess
+  correct_letter << user_guess
+end
+
