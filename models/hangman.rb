@@ -1,3 +1,5 @@
+class Hangman
+
 words = "able
 about
 account
@@ -852,9 +854,11 @@ puts guessing_word
 puts "_ " * guessing_word.length
 
 correct_letter = []
+lives_left = 6
 
 
 loop do
+
 
 puts "Guess a letter"
 
@@ -868,13 +872,13 @@ end
 
 if guessing_word.include? user_guess
   correct_letter << user_guess
+else
+  lives_left -= 1
+end
 
-# puts guessing_word.chars.inspect
-# puts guessing_word.chars.map { |character| character }.inspect
-# puts guessing_word.chars.map { |character| "_" }.inspect
-# puts guessing_word.chars.map { |character| "_" }.join(" ")
+puts "Lives Left: #{lives_left}"	
 
-word_to_display = guessing_word.chars.map do |character|
+word_displayed = guessing_word.chars.map do |character|
   if correct_letter.include? character
     character
   else
@@ -882,14 +886,21 @@ word_to_display = guessing_word.chars.map do |character|
   end
 end.join(" ")
 
-puts word_to_display
+puts word_displayed
 
-# break
+if (guessing_word.chars - correct_letter).none?
+  puts "YEEEEEAAAA!"
+  break
+end
+
+if lives_left <= 0
+  puts "NOOOOOOOOOOOO"
+  break
+end
 
 end
 
 
 
 
- end
 
