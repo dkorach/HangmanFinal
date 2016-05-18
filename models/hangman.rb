@@ -864,14 +864,15 @@ if guessing_word.include? user_guess
   puts "OOOOOOHHHHHH YEEEEEAAAA"
 else
 	puts "NOOOOOOOOOOOO"
+end
 
 if guessing_word.include? user_guess
   correct_letter << user_guess
 
-puts guessing_word.chars.inspect
-puts guessing_word.chars.map { |character| character }.inspect
-puts guessing_word.chars.map { |character| "_" }.inspect
-puts guessing_word.chars.map { |character| "_" }.join(" ")
+# puts guessing_word.chars.inspect
+# puts guessing_word.chars.map { |character| character }.inspect
+# puts guessing_word.chars.map { |character| "_" }.inspect
+# puts guessing_word.chars.map { |character| "_" }.join(" ")
 
 word_to_display = guessing_word.chars.map do |character|
   if correct_letter.include? character
@@ -883,13 +884,12 @@ end.join(" ")
 
 puts word_to_display
 
-break
+# break
 
 end
 
 
 
 
-end
-end
+ end
 
