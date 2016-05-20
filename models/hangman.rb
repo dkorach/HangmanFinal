@@ -1,6 +1,7 @@
 class Hangman
+  attr_accessor :lives_left, :guessing_word, :word_displayed, :correct_letter, :blanks
   def initialize
-words = "able
+@words = "able
 about
 account
 acid
@@ -849,9 +850,9 @@ yes
 yesterday
 you
 young".split
-@guessing_word = words.sample
-puts @guessing_word
-puts "_ " * @guessing_word.length
+@guessing_word = @words.sample
+
+@blanks = "_ " * @guessing_word.length
 
 @correct_letter = []
 @lives_left = 6
@@ -864,19 +865,13 @@ def play(user_guess)
 
 loop do
 
-if @guessing_word.include? @user_guess
-  puts "OOOOOOHHHHHH YEEEEEAAAA"
-else
-	puts "NOOOOOOOOOOOO"
-end
 
-if @guessing_word.include? @user_guess
-  @correct_letter << @user_guess
+
+if @guessing_word.include? user_guess
+  @correct_letter << user_guess
 else
   @lives_left -= 1
 end
-
-puts "Lives Left: #{lives_left}"	
 
 @word_displayed = @guessing_word.chars.map do |character|
   if @correct_letter.include? character
@@ -886,15 +881,14 @@ puts "Lives Left: #{lives_left}"
   end
 end.join(" ")
 
-puts @word_displayed
+return @word_displayed
 
 if (@guessing_word.chars - @correct_letter).none?
-  puts "YEEEEEAAAA!"
-  break
+  return "YEEEEEAAAA!"
+  
 end
 
 if @lives_left <= 0
-  puts "NOOOOOOOOOOOO"
   break
 end
 
