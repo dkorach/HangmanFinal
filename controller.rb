@@ -17,13 +17,16 @@ post '/user_guess' do
 	@lives = session[:game].lives_left
 	if @lives > 0
 		if session[:game].guessing_word.include? params[:user_guess]
+  			erb :index
   			@context = "OOOOOOHHHHHH YEEEEEAAAA"
 		else
+			erb :index
 			@context = "NOOOOOOOOOOOO"
 		end
 		erb :index
 	else
-		@end = "You lose"
-		erb :results
+		erb :index
 	end
+
+
 end
